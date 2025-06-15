@@ -33,10 +33,12 @@ jobs:
           echo "Current directory: $(pwd)"
 
       - name: Display current date and time
-        run: echo "Current date and time: $(date)"
+        run: |
+          echo "Current date and time: $(date)"
 
       - name: Display environment variable
-        run: echo "Greeting: $GREETING"
+        run: |
+          echo "Greeting: $GREETING"
 
       - name: Read text file
         run: cat main.txt
