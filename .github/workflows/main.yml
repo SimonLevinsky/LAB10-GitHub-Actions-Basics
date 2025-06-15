@@ -15,32 +15,32 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        
+
       - name: Welcome message
         run: |
           echo "===========================================" 
           echo "Starting GitHub Actions workflow execution"
           echo "This workflow was triggered by a ${{ github.event_name }} event"
           echo "===========================================" 
-      
+
       - name: List repository files
         run: ls -la
-      
+
       - name: Display system information
         run: |
           echo "System Information:"
           echo "OS: $(uname -a)"
           echo "Current directory: $(pwd)"
-          
-       - name: Show current date and time
-         run: echo "Current date and time: $(date)"
-        
+
+      - name: Display current date and time
+        run: echo "Current date and time: $(date)"
+
       - name: Display environment variable
         run: echo "Greeting: $GREETING"
-        
+
       - name: Read text file
         run: cat main.txt
-        
+
       - name: Append information to text file
         run: |
           echo "" >> processed_output.txt
@@ -51,4 +51,4 @@ jobs:
           echo "OS: $(uname -a)" >> processed_output.txt
           echo "===== END OF PROCESSING =====" >> processed_output.txt
           cat main.txt > processed_output.txt
-          cat processed_output.txt 
+          cat processed_output.txt
