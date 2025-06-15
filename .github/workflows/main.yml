@@ -9,41 +9,47 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     env:
       GREETING: "Hello from GitHub Actions workflow!"
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Welcome message
+      - name: Show welcome message
         run: |
           echo "==========================================="
           echo "Starting GitHub Actions workflow execution"
           echo "This workflow was triggered by a ${{ github.event_name }} event"
           echo "==========================================="
 
-      - name: List repository files
+      - name: List files in repo
         run: ls -la
 
-      - name: Display system information
+      - name: Show system information
         run: |
           echo "System Information:"
           echo "OS: $(uname -a)"
           echo "Current directory: $(pwd)"
 
-      - name: Display current date and time
+      - name: Show current date and time
         run: |
           echo "Current date and time: $(date)"
 
-      - name: Display environment variable
+      - name: Show greeting environment variable
         run: |
           echo "Greeting: $GREETING"
 
-      - name: Read text file
-        run: cat main.txt
+      - name: Read contents of main.txt (if exists)
+        run: |
+          if [ -f main.txt ]; then
+            cat main.txt
+          else
+            echo "main.txt not found"
+          fi
 
-      - name: Append information to text file
+      - name: Create processed_output.txt with system info
         run: |
           echo "" >> processed_output.txt
           echo "===== GITHUB ACTIONS PROCESSING RESULTS =====" >> processed_output.txt
@@ -52,5 +58,10 @@ jobs:
           echo "System Information:" >> processed_output.txt
           echo "OS: $(uname -a)" >> processed_output.txt
           echo "===== END OF PROCESSING =====" >> processed_output.txt
-          cat main.txt >> processed_output.txt
+
+          if [ -f main.txt ]; then
+            cat main.txt >> processed_output.txt
+          fi
+
+          echo "Final contents of processed_output.txt:"
           cat processed_output.txt
