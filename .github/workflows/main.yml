@@ -32,8 +32,8 @@ jobs:
           echo "OS: $(uname -a)"
           echo "Current directory: $(pwd)"
           
-      - name: Display current date and time
-        run: echo "Current date and time: $(date)"
+       - name: Show current date and time
+         run: echo "Current date and time: $(date)"
         
       - name: Display environment variable
         run: echo "Greeting: $GREETING"
