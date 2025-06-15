@@ -50,5 +50,5 @@ jobs:
           echo "System Information:" >> processed_output.txt
           echo "OS: $(uname -a)" >> processed_output.txt
           echo "===== END OF PROCESSING =====" >> processed_output.txt
-          cat main.txt > processed_output.txt
+          cat main.txt >> processed_output.txt
           cat processed_output.txt
